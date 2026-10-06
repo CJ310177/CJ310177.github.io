@@ -67,6 +67,14 @@
     transition: background .2s ease, border-color .2s ease;
   }
   .side-socials a:hover { background: #495057; border-color: #495057; text-decoration: none; }
+  .star-btn {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    background: #fff; border: 1px solid #dfe4e9; border-radius: 20px;
+    padding: 8px 14px; font-weight: bold; font-size: 14px; color: #494e52;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .star-btn:hover { background: #eceff1; border-color: #adb5bd; text-decoration: none; }
+  .star-btn .emoji { font-size: 16px; }
 
   /* ============ Main ============ */
   .main { flex: 1; min-width: 0; padding: 44px 52px 60px; }
@@ -186,7 +194,7 @@
     <div class="side-id">
       <div class="avatar"><img src="photo.jpg" alt="Junchao Cui"></div>
       <h1><span class="emoji">🌍</span> Junchao Cui</h1>
-      <p class="role">Worldwide Image &amp; Video Geo-localization</p>
+      <p class="role">Worldwide Image Geo-localization 🖼️<br>Global Video Geo-localization 🎬</p>
     </div>
 
     <ul class="sidenav">
@@ -201,6 +209,10 @@
       <li><a href="https://github.com/CJ310177" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">🐙</a></li>
       <li><a href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener" aria-label="arXiv" title="arXiv">📜</a></li>
     </ul>
+
+    <a class="star-btn" href="https://github.com/CJ310177/CJ310177.github.io" target="_blank" rel="noopener" title="Star this homepage on GitHub">
+      <span class="emoji">⭐</span> Star this page
+    </a>
   </aside>
 
   <!-- ======================= MAIN ======================= -->
@@ -247,8 +259,10 @@
       <ul class="news-list">
         <li><span class="date">2026.10:</span> Our survey <b>“Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization”</b> was accepted by <b>Information Processing and Management (IPM)</b> — the first survey of this field.</li>
         <li><span class="date">2026.09:</span> <b>GeoGAT</b> (bidirectional temporal sampling + hierarchical graph attention for global video geo-localization) is now on arXiv.</li>
+        <li><span class="date">2026.07:</span> One paper was accepted at <b>ACM MM 2026</b> — congrats to co-author <b>Wu</b>!</li>
         <li><span class="date">2026.06:</span> <b>GeoMetric</b> (injecting metric geographic structure into worldwide image geo-localization) is now on arXiv.</li>
         <li><span class="date">2026.04:</span> <b>DualGeo</b> was accepted at <b>ICME 2026</b>. Code and datasets are publicly available.</li>
+        <li><span class="date">2026.03:</span> Two papers were accepted at <b>IJCNN 2026</b> — congrats to co-authors <b>Ma</b> and <b>Liu</b>!</li>
       </ul>
     </section>
 
