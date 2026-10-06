@@ -17,46 +17,104 @@
     -webkit-font-smoothing: antialiased;
   }
   ::selection { color: #fff; background: #224b8d; }
-  .wrap { max-width: 920px; margin: 0 auto; padding: 0 28px; }
   a { color: #224b8d; text-decoration: none; }
   a:hover { text-decoration: underline; }
+  svg.icon { width: 16px; height: 16px; fill: currentColor; flex: none; }
 
-  /* ---------- Header ---------- */
-  header { padding: 56px 0 36px; border-bottom: 1px solid #e8e8e8; }
-  .head-grid { display: flex; gap: 44px; align-items: flex-start; }
-  .head-text { flex: 1; min-width: 0; }
-  .head-text h1 {
-    font-size: 40px; line-height: 1.1; color: #1a1a1a; margin-bottom: 10px; letter-spacing: .01em;
-  }
-  .head-text .role { font-size: 17px; color: #494e52; margin-bottom: 6px; }
-  .head-text .role em { color: #224b8d; font-style: normal; font-weight: bold; }
-  .sociallinks { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px; }
-  .sociallinks a { font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
-  .sociallinks svg { width: 17px; height: 17px; fill: #224b8d; flex: none; }
-  .photo {
-    flex: none; width: 260px;
-    border-radius: 10px; overflow: hidden;
-    box-shadow: 0 2px 14px rgba(0,0,0,.14);
-  }
-  .photo img { display: block; width: 100%; height: auto; }
+  /* ============ Layout ============ */
+  .layout { display: flex; max-width: 1180px; margin: 0 auto; }
 
-  /* ---------- Sections ---------- */
-  section { padding: 36px 0; border-bottom: 1px solid #ececec; }
-  section:last-of-type { border-bottom: none; }
+  /* ============ Sidebar ============ */
+  .sidebar {
+    width: 264px; flex: none;
+    position: sticky; top: 0; align-self: flex-start;
+    height: 100vh; overflow-y: auto;
+    background: #f6f8fa;
+    border-right: 1px solid #e8ebee;
+    padding: 40px 26px 28px;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .side-id { text-align: center; }
+  .side-id .avatar {
+    width: 132px; height: 132px; margin: 0 auto 16px;
+    border-radius: 50%; overflow: hidden;
+    border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  }
+  .side-id .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .side-id h1 {
+    font-size: 24px; color: #1a1a1a; line-height: 1.2;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .side-id h1 svg { width: 21px; height: 21px; fill: #224b8d; }
+  .side-id .role {
+    margin-top: 8px; font-size: 13.5px; color: #5a6066;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .side-id .role svg { width: 15px; height: 15px; fill: #4a7bc0; }
+
+  .sidenav { list-style: none; border-top: 1px solid #e4e8ec; padding-top: 18px; }
+  .sidenav a {
+    display: flex; align-items: center; gap: 11px;
+    padding: 9px 12px; margin-bottom: 2px; border-radius: 8px;
+    color: #494e52; font-size: 15px; font-weight: bold;
+    border-left: 3px solid transparent;
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .sidenav a:hover { background: #eceff3; text-decoration: none; }
+  .sidenav a.active { background: #e3ebf6; color: #224b8d; border-left-color: #224b8d; }
+  .sidenav a svg { width: 16px; height: 16px; fill: #7c8894; transition: fill .2s ease; }
+  .sidenav a.active svg, .sidenav a:hover svg { fill: #224b8d; }
+
+  .side-socials {
+    margin-top: auto; list-style: none; display: flex; justify-content: center; gap: 14px;
+    border-top: 1px solid #e4e8ec; padding-top: 18px;
+  }
+  .side-socials a {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: #fff; border: 1px solid #dfe4e9;
+    transition: background .2s ease, border-color .2s ease;
+  }
+  .side-socials a:hover { background: #224b8d; border-color: #224b8d; text-decoration: none; }
+  .side-socials a:hover svg { fill: #fff; }
+  .side-socials svg { width: 17px; height: 17px; fill: #494e52; transition: fill .2s ease; }
+
+  /* ============ Main ============ */
+  .main { flex: 1; min-width: 0; padding: 44px 52px 60px; }
+  section { scroll-margin-top: 24px; margin-bottom: 56px; }
+  section:last-child { margin-bottom: 0; }
+
   h2 {
-    font-size: 24px; color: #1a1a1a; margin-bottom: 18px;
-    padding-bottom: 8px; border-bottom: 2px solid #224b8d; display: inline-block;
+    font-size: 24px; color: #1a1a1a; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 10px; border-bottom: 2px solid #224b8d;
   }
+  h2 svg { width: 21px; height: 21px; fill: #224b8d; }
   .bio p { margin-bottom: 12px; max-width: 780px; }
-  .bio a { color: #224b8d; }
+
+  /* Research interest chips */
+  .chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 22px; max-width: 780px; }
+  .chip {
+    display: flex; align-items: center; gap: 13px;
+    background: #f6f8fa; border: 1px solid #e6eaee; border-radius: 10px;
+    padding: 14px 16px; transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .chip:hover { border-color: #224b8d; box-shadow: 0 2px 10px rgba(34,75,141,.10); }
+  .chip .cicon {
+    width: 40px; height: 40px; flex: none; border-radius: 10px;
+    background: #e3ebf6; display: flex; align-items: center; justify-content: center;
+  }
+  .chip .cicon svg { width: 21px; height: 21px; fill: #224b8d; }
+  .chip b { display: block; color: #1a1a1a; font-size: 14.5px; line-height: 1.35; }
+  .chip span { font-size: 12.5px; color: #8a9096; }
 
   /* News */
   .news-list { list-style: none; }
-  .news-list li { margin-bottom: 8px; }
+  .news-list li { margin-bottom: 10px; }
   .news-list .date { color: #224b8d; font-weight: bold; font-variant-numeric: tabular-nums; }
 
   /* Publications */
-  .pub { margin-bottom: 44px; }
+  .pub { margin-bottom: 46px; }
   .pub:last-child { margin-bottom: 0; }
   .pub .title { font-size: 18.5px; font-weight: bold; color: #1a1a1a; line-height: 1.4; margin-bottom: 4px; }
   .pub .authors { font-size: 15px; color: #5a6066; margin-bottom: 4px; }
@@ -79,6 +137,15 @@
   }
   .pub figcaption { font-size: 13px; color: #8a9096; margin-top: 6px; }
 
+  /* Contact */
+  .contact-card {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+    background: #f6f8fa; border: 1px solid #e6eaee; border-radius: 10px;
+    padding: 18px 22px; max-width: 780px;
+  }
+  .contact-card a { display: inline-flex; align-items: center; gap: 8px; font-weight: bold; }
+  .contact-card svg { width: 17px; height: 17px; fill: #224b8d; }
+
   /* BibTeX modal */
   .modal {
     position: fixed; inset: 0; z-index: 100; display: none;
@@ -97,163 +164,220 @@
     padding: 14px 16px; overflow-x: auto; white-space: pre; margin-bottom: 14px; color: #333;
   }
   .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-  .modal-actions button {
-    font: inherit; font-size: 14px; font-weight: bold; cursor: pointer;
-    border-radius: 6px; padding: 7px 18px;
-  }
+  .modal-actions button { font: inherit; font-size: 14px; font-weight: bold; cursor: pointer; border-radius: 6px; padding: 7px 18px; }
   .modal-actions .copy { background: #224b8d; color: #fff; border: 1px solid #224b8d; }
   .modal-actions .copy:hover { background: #1a3a6e; }
   .modal-actions .close2 { background: #fff; color: #494e52; border: 1px solid #ccc; }
 
-  footer { padding: 26px 0 44px; font-size: 13.5px; color: #9aa0a6; }
-  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  footer.pagefoot { padding: 22px 0 8px; font-size: 13px; color: #9aa0a6; border-top: 1px solid #ececec; margin-top: 8px; }
 
-  @media (max-width: 720px) {
-    .head-grid { flex-direction: column-reverse; }
-    .photo { width: 210px; }
-    .head-text h1 { font-size: 32px; }
+  /* ============ Responsive ============ */
+  @media (max-width: 860px) {
+    .layout { flex-direction: column; }
+    .sidebar {
+      width: 100%; height: auto; position: static;
+      border-right: none; border-bottom: 1px solid #e8ebee;
+      padding: 26px 22px 18px; text-align: center;
+    }
+    .side-id .avatar { width: 104px; height: 104px; }
+    .sidenav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; border-top: none; padding-top: 0; }
+    .sidenav a { border-left: none; border: 1px solid #dfe4e9; border-radius: 20px; background: #fff; padding: 7px 14px; margin-bottom: 0; font-size: 13.5px; }
+    .sidenav a.active { background: #224b8d; color: #fff; border-color: #224b8d; }
+    .sidenav a.active svg, .sidenav a:hover svg { fill: #224b8d; }
+    .sidenav a.active svg { fill: #fff; }
+    .side-socials { margin-top: 0; }
+    .main { padding: 30px 22px 46px; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="wrap">
-    <div class="head-grid">
-      <div class="head-text">
-        <h1>Junchao Cui</h1>
-        <p class="role">Researcher in Computer Vision — <em>Worldwide Image &amp; Video Geo-localization</em></p>
-        <ul class="sociallinks">
-          <li><a href="mailto:cjc20250301@163.com">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251V4.809l5.74 4.508a1.75 1.75 0 0 0 2.02 0l5.74-4.508v7.442a.25.25 0 0 1-.25.25H1.75a.25.25 0 0 1-.25-.25Zm.22-9.219 5.72 4.504a.25.25 0 0 0 .22 0l5.72-4.504a.248.248 0 0 0-.22-.281H1.97a.25.25 0 0 0-.25.281Z"/></svg>
-            Email</a></li>
-          <li><a href="https://github.com/CJ310177" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.08 1.89 3.75 3.65 3.95.22.2.42.6.42 1.23 0 .89-.01 1.6-.01 1.82 0 .21.15.46.55.38A8.012 8.012 0 0 1 16 8c0-4.42-3.58-8-8-8Z"/></svg>
-            GitHub</a></li>
-          <li><a href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener">
-            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M3.7 2.2 8.02 13.9 5.74 14 .3 2.4l3.4-.2Zm8.6 0L7.98 13.9l2.28.1L15.7 2.4l-3.4-.2ZM8.35 1l-.7 1.8h1.3L8.65 1h-.3Z" transform="scale(0.95) translate(0.4,0.5)"/></svg>
-            arXiv</a></li>
-        </ul>
-      </div>
-      <div class="photo">
-        <img src="photo.jpg" alt="Junchao Cui">
-      </div>
-    </div>
-  </div>
-</header>
+<div class="layout">
 
-<!-- ======================= ABOUT / BIO ======================= -->
-<section id="about">
-  <div class="wrap">
-    <div class="bio">
-      <p>
-        I am a researcher in computer vision working on <b>worldwide image and video geo-localization</b> —
-        inferring where on Earth visual content was captured, from street level up to the continent.
-        My work covers dual-view contrastive representation learning, metric geographic structure
-        modeling, and hierarchical graph reasoning over geographic scales, often augmented by large
-        multimodal models (LMMs).
-      </p>
-      <!-- EDIT: add your affiliation / degree / lab here -->
-      <p>
-        My work has been published at <b>ICME 2026</b> and <b>Information Processing and Management (IPM)</b>.
-        I authored the <a href="#pub-survey">first survey on worldwide image geo-localization</a>.
-        Feel free to reach out for collaboration or discussion.
+  <!-- ======================= SIDEBAR ======================= -->
+  <aside class="sidebar">
+    <div class="side-id">
+      <div class="avatar"><img src="photo.jpg" alt="Junchao Cui"></div>
+      <h1>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm5.7 7.5h-2.6a12.9 12.9 0 0 0-1-4.6A6.5 6.5 0 0 1 13.7 7.5Zm-5.7 6a11.5 11.5 0 0 1-1.5-5.5h3a11.5 11.5 0 0 1-1.5 5.5Zm-2-5.5H4.4a11.5 11.5 0 0 1-1.5 5.5 6.5 6.5 0 0 1 2.6-5.5Zm-3.9-1h2.6a12.9 12.9 0 0 1 1-4.6 6.5 6.5 0 0 0-3.6 4.6Zm5.9-6a11.5 11.5 0 0 1 1.5 5.5h-3A11.5 11.5 0 0 1 8 1Zm3.6 1a12.9 12.9 0 0 1 1 4.6h2.6a6.5 6.5 0 0 0-3.6-4.6ZM2.3 8.5a6.5 6.5 0 0 0 3.6 4.6 12.9 12.9 0 0 1-1-4.6H2.3Zm8.9 4.6a12.9 12.9 0 0 1 1 4.6 6.5 6.5 0 0 0 3.6-4.6H11.2Zm-.5-4.6h3a11.5 11.5 0 0 1-1.5 5.5 6.5 6.5 0 0 1-1.5-5.5Z"/></svg>
+        Junchao Cui
+      </h1>
+      <p class="role">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm5.7 7.5h-2.6a12.9 12.9 0 0 0-1-4.6A6.5 6.5 0 0 1 13.7 7.5Zm-5.7 6a11.5 11.5 0 0 1-1.5-5.5h3a11.5 11.5 0 0 1-1.5 5.5Zm-2-5.5H4.4a11.5 11.5 0 0 1-1.5 5.5 6.5 6.5 0 0 1 2.6-5.5Zm-3.9-1h2.6a12.9 12.9 0 0 1 1-4.6 6.5 6.5 0 0 0-3.6 4.6Zm5.9-6a11.5 11.5 0 0 1 1.5 5.5h-3A11.5 11.5 0 0 1 8 1Zm3.6 1a12.9 12.9 0 0 1 1 4.6h2.6a6.5 6.5 0 0 0-3.6-4.6ZM2.3 8.5a6.5 6.5 0 0 0 3.6 4.6 12.9 12.9 0 0 1-1-4.6H2.3Zm8.9 4.6a12.9 12.9 0 0 1 1 4.6 6.5 6.5 0 0 0 3.6-4.6H11.2Zm-.5-4.6h3a11.5 11.5 0 0 1-1.5 5.5 6.5 6.5 0 0 1-1.5-5.5Z"/></svg>
+        Worldwide Image &amp; Video Geo-localization
       </p>
     </div>
-  </div>
-</section>
 
-<!-- ======================= NEWS ======================= -->
-<section id="news">
-  <div class="wrap">
-    <h2>News</h2>
-    <ul class="news-list">
-      <li><span class="date">2026.10:</span> Our survey <b>“Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization”</b> was accepted by <b>Information Processing and Management (IPM)</b> — the first survey of this field.</li>
-      <li><span class="date">2026.09:</span> <b>GeoGAT</b> (bidirectional temporal sampling + hierarchical graph attention for global video geo-localization) is now on arXiv.</li>
-      <li><span class="date">2026.06:</span> <b>GeoMetric</b> (injecting metric geographic structure into worldwide image geo-localization) is now on arXiv.</li>
-      <li><span class="date">2026.04:</span> <b>DualGeo</b> was accepted at <b>ICME 2026</b>. Code and datasets are publicly available.</li>
+    <ul class="sidenav">
+      <li><a href="#about" class="active">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M10.561 8.073a6.005 6.005 0 0 0-5.123 0 8 8 0 0 0-2.783 2.365A7.97 7.97 0 0 0 1 14c0 .552.448 1 1 1h12c.552 0 1-.448 1-1a7.97 7.97 0 0 0-1.655-4.562 8 8 0 0 0-2.784-2.365ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+        About</a></li>
+      <li><a href="#news">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16ZM3.91 5.21A6.52 6.52 0 0 1 8 4a6.5 6.5 0 0 1 4.09 1.21c.44.347.6.993.365 1.517l-.003.006a.85.85 0 0 1-1.396.284l-.015-.015A4.82 4.82 0 0 0 8 6a4.82 4.82 0 0 0-3.041 1.002l-.015.015a.85.85 0 0 1-1.396-.284l-.003-.006a1.08 1.08 0 0 1 .365-1.527Zm8.105 7.047A1 1 0 0 1 11.1 11H4.9a1 1 0 0 1-.915-1.414c.356-.829.83-1.589 1.397-2.258a.87.87 0 0 1 1.153-.156A6.47 6.47 0 0 0 8 7.5a6.47 6.47 0 0 0 1.465.672.87.87 0 0 1 1.153.156 8.5 8.5 0 0 1 1.397 2.258 1 1 0 0 1 0 .672Z"/></svg>
+        News</a></li>
+      <li><a href="#publications">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.5c.098 0 .196.02.288.059l4.5 2a.75.75 0 0 1-.002 1.382L6.474 6.75l3.062 1.366a.75.75 0 0 1-.002 1.382l-4.5 2A.75.75 0 0 1 4.5 12h-3a.75.75 0 0 1-.75-.75V1.75ZM8.453 5.95 5.75 7.154V4.846l2.703 1.104ZM5.75 9.846l2.703 1.104-2.703 1.104V9.846Zm-1.5-7.1V11h3.024L10.5 8 7.274 5H4.25Z"/><path d="M12.75 1h2.25a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-3.5a.75.75 0 0 1-.75-.75V2.75a.75.75 0 0 1 .75-.75h1.25ZM13.5 12h1.5V8.5h-1.5V12Zm0-5h1.5V3.5h-1.5V7Z" opacity=".55"/></svg>
+        Publications</a></li>
+      <li><a href="#contact">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251V4.809l5.74 4.508a1.75 1.75 0 0 0 2.02 0l5.74-4.508v7.442a.25.25 0 0 1-.25.25H1.75a.25.25 0 0 1-.25-.25Zm.22-9.219 5.72 4.504a.25.25 0 0 0 .22 0l5.72-4.504a.248.248 0 0 0-.22-.281H1.97a.25.25 0 0 0-.25.281Z"/></svg>
+        Contact</a></li>
     </ul>
-  </div>
-</section>
 
-<!-- ======================= PUBLICATIONS ======================= -->
-<section id="publications">
-  <div class="wrap">
-    <h2>Publications</h2>
+    <ul class="side-socials">
+      <li><a href="mailto:cjc20250301@163.com" aria-label="Email">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251V4.809l5.74 4.508a1.75 1.75 0 0 0 2.02 0l5.74-4.508v7.442a.25.25 0 0 1-.25.25H1.75a.25.25 0 0 1-.25-.25Zm.22-9.219 5.72 4.504a.25.25 0 0 0 .22 0l5.72-4.504a.248.248 0 0 0-.22-.281H1.97a.25.25 0 0 0-.25.281Z"/></svg></a></li>
+      <li><a href="https://github.com/CJ310177" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.08 1.89 3.75 3.65 3.95.22.2.42.6.42 1.23 0 .89-.01 1.6-.01 1.82 0 .21.15.46.55.38A8.012 8.012 0 0 1 16 8c0-4.42-3.58-8-8-8Z"/></svg></a></li>
+      <li><a href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener" aria-label="arXiv">
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 1.9 7.6 12l-1.8.1L2.4 2.3l1.8-.4Zm7.6 0L8.4 12l1.8.1 3.4-9.8-1.8-.4ZM8.9.9l-.6 1.5h1.4L9.1.9h-.2Z"/></svg></a></li>
+    </ul>
+  </aside>
 
-    <!-- Survey -->
-    <article class="pub" id="pub-survey">
-      <p class="title">Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization</p>
-      <!-- EDIT: confirm the full author list for the survey -->
-      <p class="authors"><span class="me">Junchao Cui</span></p>
-      <p class="venue"><span class="v">IPM 2026</span> · Information Processing and Management · Accepted</p>
-      <p class="plinks">
-        <button onclick="openBib('survey')">BibTeX</button>
-      </p>
-      <figure>
-        <img src="survey.jpg" alt="Taxonomy of the survey on worldwide image geo-localization">
-        <figcaption>An overview of the worldwide image geo-localization pipeline and the taxonomy covered in our survey.</figcaption>
-      </figure>
-    </article>
+  <!-- ======================= MAIN ======================= -->
+  <main class="main">
 
-    <!-- GeoGAT -->
-    <article class="pub">
-      <p class="title">GeoGAT: Bidirectional Temporal Sampling Meets Hierarchical Graph Attention for Global Video Geo-localization</p>
-      <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Hangyu Li, Biru Zhu, Chong Fu, Xiangyang Luo</p>
-      <p class="venue"><span class="v prep">Preprint</span> · arXiv:2609.39128 · September 2026</p>
-      <p class="plinks">
-        <a href="https://arxiv.org/pdf/2609.39128" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
-        <a href="https://arxiv.org/abs/2609.39128" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
-        <button onclick="openBib('geogat')">BibTeX</button>
-      </p>
-      <figure>
-        <img src="geogat.jpg" alt="GeoGAT framework overview">
-        <figcaption>GeoGAT overview: bidirectional temporal sampling feeds a predefined geographic hierarchy graph with GAT-based message passing.</figcaption>
-      </figure>
-    </article>
+    <!-- About -->
+    <section id="about">
+      <h2>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M10.561 8.073a6.005 6.005 0 0 0-5.123 0 8 8 0 0 0-2.783 2.365A7.97 7.97 0 0 0 1 14c0 .552.448 1 1 1h12c.552 0 1-.448 1-1a7.97 7.97 0 0 0-1.655-4.562 8 8 0 0 0-2.784-2.365ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+        About
+      </h2>
+      <div class="bio">
+        <p>
+          I am <b>Junchao Cui</b>, a researcher in computer vision working on <b>worldwide image and
+          video geo-localization</b> — inferring where on Earth visual content was captured, from
+          street level up to the continent. My work covers dual-view contrastive representation
+          learning, metric geographic structure modeling, and hierarchical graph reasoning over
+          geographic scales, often augmented by large multimodal models (LMMs).
+        </p>
+        <!-- EDIT: add your affiliation / degree / lab here -->
+        <p>
+          My work has been published at <b>ICME 2026</b> and <b>Information Processing and Management
+          (IPM)</b>. I authored the <a href="#pub-survey">first survey on worldwide image
+          geo-localization</a>. Feel free to reach out for collaboration or discussion.
+        </p>
+      </div>
 
-    <!-- GeoMetric -->
-    <article class="pub">
-      <p class="title">GeoMetric: Injecting Metric Geographic Structure into Worldwide Image Geo-Localization</p>
-      <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Nan Wu, Biru Zhu, Xiangyang Luo</p>
-      <p class="venue"><span class="v prep">Preprint</span> · arXiv:2606.08918 · June 2026</p>
-      <p class="plinks">
-        <a href="https://arxiv.org/pdf/2606.08918" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
-        <a href="https://arxiv.org/abs/2606.08918" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
-        <button onclick="openBib('geometric')">BibTeX</button>
-      </p>
-      <figure>
-        <img src="geometric.jpg" alt="GeoMetric framework overview">
-        <figcaption>GeoMetric encodes GPS coordinates relationally and injects distance structure into representation learning and inference.</figcaption>
-      </figure>
-    </article>
+      <div class="chips">
+        <div class="chip">
+          <span class="cicon"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm5.7 7.5h-2.6a12.9 12.9 0 0 0-1-4.6A6.5 6.5 0 0 1 13.7 7.5Zm-5.7 6a11.5 11.5 0 0 1-1.5-5.5h3a11.5 11.5 0 0 1-1.5 5.5Zm-2-5.5H4.4a11.5 11.5 0 0 1-1.5 5.5 6.5 6.5 0 0 1 2.6-5.5Zm-3.9-1h2.6a12.9 12.9 0 0 1 1-4.6 6.5 6.5 0 0 0-3.6 4.6Zm5.9-6a11.5 11.5 0 0 1 1.5 5.5h-3A11.5 11.5 0 0 1 8 1Zm3.6 1a12.9 12.9 0 0 1 1 4.6h2.6a6.5 6.5 0 0 0-3.6-4.6ZM2.3 8.5a6.5 6.5 0 0 0 3.6 4.6 12.9 12.9 0 0 1-1-4.6H2.3Zm8.9 4.6a12.9 12.9 0 0 1 1 4.6 6.5 6.5 0 0 0 3.6-4.6H11.2Zm-.5-4.6h3a11.5 11.5 0 0 1-1.5 5.5 6.5 6.5 0 0 1-1.5-5.5Z"/></svg></span>
+          <div><b>Worldwide Image Geo-localization</b><span>Single-image location estimation</span></div>
+        </div>
+        <div class="chip">
+          <span class="cicon"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M0 3.75C0 2.784.784 2 1.75 2h8.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 10.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25h-8.5ZM15 5.674V11.5a2.5 2.5 0 0 1-2.5 2.5h-8a.5.5 0 0 1 0-1h8A1.5 1.5 0 0 0 14 11.5V5.674a.5.5 0 1 1 1 0ZM3.5 5.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM4.75 5.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM6 5.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/></svg></span>
+          <div><b>Global Video Geo-localization</b><span>Temporal & hierarchical cues</span></div>
+        </div>
+        <div class="chip">
+          <span class="cicon"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1ZM2.5 8a5.5 5.5 0 0 1 5.5-5.5c.35 0 .685.066 1 .165V3a1 1 0 0 0 2 0v.5a5.49 5.49 0 0 1 1.5 1V5a1 1 0 0 0-2 0v.263A5.5 5.5 0 0 1 8 13.5a5.5 5.5 0 0 1-5.5-5.5Zm9.03 3.03a5.47 5.47 0 0 1-1.53 1.32V12a1 1 0 0 0-2 0v.28a5.47 5.47 0 0 1-1.6-.46l.7-.7a1 1 0 0 0-1.4-1.42l-.7.7a5.47 5.47 0 0 1-.46-1.6H5a1 1 0 0 0 0-2h.28a5.47 5.47 0 0 1 .46-1.6l.7.7A1 1 0 1 0 7.84 5.8l-.7-.7c.5-.3 1.03-.46 1.6-.46V5a1 1 0 0 0 2 0v-.28c.54.13 1.05.36 1.5.68l-.7.7a1 1 0 0 0 1.42 1.4l.7-.7c.28.47.47.97.54 1.5H13a1 1 0 0 0 0 2h-.28c-.07.53-.26 1.03-.54 1.5l-.7-.7a1 1 0 0 0-1.41 1.41l.7.7Z"/></svg></span>
+          <div><b>Multimodal Large Models</b><span>Retrieval-augmented LMM reasoning</span></div>
+        </div>
+      </div>
+    </section>
 
-    <!-- DualGeo -->
-    <article class="pub">
-      <p class="title">DualGeo: A Dual-View Framework for Worldwide Image Geo-localization</p>
-      <p class="authors"><span class="me">Junchao Cui</span>, Wenqi Shi, Shaoyong Du, Hang He, Xuanzi Ma, Hao Tang, Xiangyang Luo</p>
-      <p class="venue"><span class="v">ICME 2026</span> · IEEE International Conference on Multimedia and Expo · arXiv:2604.25533</p>
-      <p class="plinks">
-        <a href="https://arxiv.org/pdf/2604.25533" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
-        <a href="https://arxiv.org/abs/2604.25533" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
-        <a href="https://github.com/CJ310177/DualGeo" target="_blank" rel="noopener">Code</a><span class="sep">|</span>
-        <button onclick="openBib('dualgeo')">BibTeX</button>
-      </p>
-      <figure>
-        <img src="dualgeo.jpg" alt="DualGeo framework overview">
-        <figcaption>DualGeo: a two-stage framework with dual-view contrastive retrieval and LMM-based geo-cognitive refinement.</figcaption>
-      </figure>
-    </article>
+    <!-- News -->
+    <section id="news">
+      <h2>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16ZM3.91 5.21A6.52 6.52 0 0 1 8 4a6.5 6.5 0 0 1 4.09 1.21c.44.347.6.993.365 1.517l-.003.006a.85.85 0 0 1-1.396.284l-.015-.015A4.82 4.82 0 0 0 8 6a4.82 4.82 0 0 0-3.041 1.002l-.015.015a.85.85 0 0 1-1.396-.284l-.003-.006a1.08 1.08 0 0 1 .365-1.527Zm8.105 7.047A1 1 0 0 1 11.1 11H4.9a1 1 0 0 1-.915-1.414c.356-.829.83-1.589 1.397-2.258a.87.87 0 0 1 1.153-.156A6.47 6.47 0 0 0 8 7.5a6.47 6.47 0 0 0 1.465.672.87.87 0 0 1 1.153.156 8.5 8.5 0 0 1 1.397 2.258 1 1 0 0 1 0 .672Z"/></svg>
+        News
+      </h2>
+      <ul class="news-list">
+        <li><span class="date">2026.10:</span> Our survey <b>“Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization”</b> was accepted by <b>Information Processing and Management (IPM)</b> — the first survey of this field.</li>
+        <li><span class="date">2026.09:</span> <b>GeoGAT</b> (bidirectional temporal sampling + hierarchical graph attention for global video geo-localization) is now on arXiv.</li>
+        <li><span class="date">2026.06:</span> <b>GeoMetric</b> (injecting metric geographic structure into worldwide image geo-localization) is now on arXiv.</li>
+        <li><span class="date">2026.04:</span> <b>DualGeo</b> was accepted at <b>ICME 2026</b>. Code and datasets are publicly available.</li>
+      </ul>
+    </section>
 
-  </div>
-</section>
+    <!-- Publications -->
+    <section id="publications">
+      <h2>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.5c.098 0 .196.02.288.059l4.5 2a.75.75 0 0 1-.002 1.382L6.474 6.75l3.062 1.366a.75.75 0 0 1-.002 1.382l-4.5 2A.75.75 0 0 1 4.5 12h-3a.75.75 0 0 1-.75-.75V1.75ZM8.453 5.95 5.75 7.154V4.846l2.703 1.104ZM5.75 9.846l2.703 1.104-2.703 1.104V9.846Zm-1.5-7.1V11h3.024L10.5 8 7.274 5H4.25Z"/><path d="M12.75 1h2.25a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-.75.75h-3.5a.75.75 0 0 1-.75-.75V2.75a.75.75 0 0 1 .75-.75h1.25ZM13.5 12h1.5V8.5h-1.5V12Zm0-5h1.5V3.5h-1.5V7Z" opacity=".55"/></svg>
+        Publications
+      </h2>
 
-<footer>
-  <div class="wrap">
-    <span>© 2026 Junchao Cui</span>
-    <span><a href="https://github.com/CJ310177" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:cjc20250301@163.com">cjc20250301@163.com</a></span>
-  </div>
-</footer>
+      <article class="pub" id="pub-survey">
+        <p class="title">Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization</p>
+        <!-- EDIT: confirm the full author list for the survey -->
+        <p class="authors"><span class="me">Junchao Cui</span></p>
+        <p class="venue"><span class="v">IPM 2026</span> · Information Processing and Management · Accepted</p>
+        <p class="plinks">
+          <button onclick="openBib('survey')">BibTeX</button>
+        </p>
+        <figure>
+          <img src="survey.jpg" alt="Taxonomy of the survey on worldwide image geo-localization">
+          <figcaption>An overview of the worldwide image geo-localization pipeline and the taxonomy covered in our survey.</figcaption>
+        </figure>
+      </article>
+
+      <article class="pub">
+        <p class="title">GeoGAT: Bidirectional Temporal Sampling Meets Hierarchical Graph Attention for Global Video Geo-localization</p>
+        <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Hangyu Li, Biru Zhu, Chong Fu, Xiangyang Luo</p>
+        <p class="venue"><span class="v prep">Preprint</span> · arXiv:2609.39128 · September 2026</p>
+        <p class="plinks">
+          <a href="https://arxiv.org/pdf/2609.39128" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
+          <a href="https://arxiv.org/abs/2609.39128" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
+          <button onclick="openBib('geogat')">BibTeX</button>
+        </p>
+        <figure>
+          <img src="geogat.jpg" alt="GeoGAT framework overview">
+          <figcaption>GeoGAT overview: bidirectional temporal sampling feeds a predefined geographic hierarchy graph with GAT-based message passing.</figcaption>
+        </figure>
+      </article>
+
+      <article class="pub">
+        <p class="title">GeoMetric: Injecting Metric Geographic Structure into Worldwide Image Geo-Localization</p>
+        <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Nan Wu, Biru Zhu, Xiangyang Luo</p>
+        <p class="venue"><span class="v prep">Preprint</span> · arXiv:2606.08918 · June 2026</p>
+        <p class="plinks">
+          <a href="https://arxiv.org/pdf/2606.08918" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
+          <a href="https://arxiv.org/abs/2606.08918" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
+          <button onclick="openBib('geometric')">BibTeX</button>
+        </p>
+        <figure>
+          <img src="geometric.jpg" alt="GeoMetric framework overview">
+          <figcaption>GeoMetric encodes GPS coordinates relationally and injects distance structure into representation learning and inference.</figcaption>
+        </figure>
+      </article>
+
+      <article class="pub">
+        <p class="title">DualGeo: A Dual-View Framework for Worldwide Image Geo-localization</p>
+        <p class="authors"><span class="me">Junchao Cui</span>, Wenqi Shi, Shaoyong Du, Hang He, Xuanzi Ma, Hao Tang, Xiangyang Luo</p>
+        <p class="venue"><span class="v">ICME 2026</span> · IEEE International Conference on Multimedia and Expo · arXiv:2604.25533</p>
+        <p class="plinks">
+          <a href="https://arxiv.org/pdf/2604.25533" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
+          <a href="https://arxiv.org/abs/2604.25533" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
+          <a href="https://github.com/CJ310177/DualGeo" target="_blank" rel="noopener">Code</a><span class="sep">|</span>
+          <button onclick="openBib('dualgeo')">BibTeX</button>
+        </p>
+        <figure>
+          <img src="dualgeo.jpg" alt="DualGeo framework overview">
+          <figcaption>DualGeo: a two-stage framework with dual-view contrastive retrieval and LMM-based geo-cognitive refinement.</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>
+        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251V4.809l5.74 4.508a1.75 1.75 0 0 0 2.02 0l5.74-4.508v7.442a.25.25 0 0 1-.25.25H1.75a.25.25 0 0 1-.25-.25Zm.22-9.219 5.72 4.504a.25.25 0 0 0 .22 0l5.72-4.504a.248.248 0 0 0-.22-.281H1.97a.25.25 0 0 0-.25.281Z"/></svg>
+        Contact
+      </h2>
+      <div class="contact-card">
+        <a href="mailto:cjc20250301@163.com">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251V4.809l5.74 4.508a1.75 1.75 0 0 0 2.02 0l5.74-4.508v7.442a.25.25 0 0 1-.25.25H1.75a.25.25 0 0 1-.25-.25Zm.22-9.219 5.72 4.504a.25.25 0 0 0 .22 0l5.72-4.504a.248.248 0 0 0-.22-.281H1.97a.25.25 0 0 0-.25.281Z"/></svg>
+          cjc20250301@163.com</a>
+        <a href="https://github.com/CJ310177" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.08 1.89 3.75 3.65 3.95.22.2.42.6.42 1.23 0 .89-.01 1.6-.01 1.82 0 .21.15.46.55.38A8.012 8.012 0 0 1 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          github.com/CJ310177</a>
+        <a href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M4.2 1.9 7.6 12l-1.8.1L2.4 2.3l1.8-.4Zm7.6 0L8.4 12l1.8.1 3.4-9.8-1.8-.4ZM8.9.9l-.6 1.5h1.4L9.1.9h-.2Z"/></svg>
+          arXiv author page</a>
+      </div>
+    </section>
+
+    <footer class="pagefoot">© 2026 Junchao Cui · Worldwide Image &amp; Video Geo-localization</footer>
+  </main>
+</div>
 
 <!-- ======================= BIBTEX MODAL ======================= -->
 <div class="modal" id="bib-modal" onclick="if(event.target===this)closeBib()">
@@ -309,6 +433,17 @@
     });
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBib(); });
+
+  // Scrollspy: highlight the current section in the sidebar nav
+  const navLinks = document.querySelectorAll('.sidenav a');
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
 </script>
 
 </body>
