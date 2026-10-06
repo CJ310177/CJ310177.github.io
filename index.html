@@ -6,267 +6,159 @@
 <title>Junchao Cui | Worldwide Image & Video Geo-localization</title>
 <meta name="description" content="Junchao Cui — researcher on worldwide image geo-localization, video geo-localization, and multimodal learning.">
 <style>
-  /* ---------- Reset & tokens ---------- */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --ink: #111111;
-    --paper: #ffffff;
-    --rule: #e5e7eb;
-    --rule-strong: #111111;
-    --muted: #6b7280;
-    --serif: Georgia, "Times New Roman", "Songti SC", serif;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-    --mono: "JetBrains Mono", Consolas, "SF Mono", Menlo, monospace;
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 16.5px;
+    background: #fff;
+    color: #494e52;
+    font-family: "Trebuchet MS", Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  ::selection { color: #fff; background: #224b8d; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+  a { color: #224b8d; text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  /* ---------- Top bar ---------- */
-  .topbar {
-    position: sticky; top: 0; z-index: 50;
-    background: var(--paper);
-    border-bottom: 1px solid var(--rule-strong);
+  /* ---------- Header ---------- */
+  header { padding: 56px 0 36px; border-bottom: 1px solid #e8e8e8; }
+  .head-grid { display: flex; gap: 44px; align-items: flex-start; }
+  .head-text { flex: 1; min-width: 0; }
+  .head-text h1 {
+    font-size: 40px; line-height: 1.1; color: #1a1a1a; margin-bottom: 10px; letter-spacing: .01em;
   }
-  .topbar .wrap {
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
+  .head-text .role { font-size: 17px; color: #494e52; margin-bottom: 6px; }
+  .head-text .role em { color: #224b8d; font-style: normal; font-weight: bold; }
+  .sociallinks { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px; }
+  .sociallinks a { font-size: 15px; display: inline-flex; align-items: center; gap: 6px; }
+  .sociallinks svg { width: 17px; height: 17px; fill: #224b8d; flex: none; }
+  .photo {
+    flex: none; width: 260px;
+    border-radius: 10px; overflow: hidden;
+    box-shadow: 0 2px 14px rgba(0,0,0,.14);
   }
-  .wordmark {
-    font-family: var(--sans); font-weight: 800; font-size: 15px;
-    letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--ink);
-  }
-  .topnav { display: flex; gap: 4px; }
-  .topnav a {
-    font-family: var(--sans); font-size: 12px; font-weight: 600;
-    letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
-    color: var(--ink); padding: 6px 12px; border: 1px solid transparent;
-    transition: background .25s ease, color .25s ease;
-  }
-  .topnav a:hover { background: var(--ink); color: var(--paper); }
-
-  /* ---------- Hero ---------- */
-  .hero { padding: 88px 0 56px; border-bottom: 1px solid var(--rule-strong); }
-  .hero .eyebrow {
-    font-family: var(--mono); font-size: 12.5px; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 18px;
-  }
-  .hero h1 {
-    font-family: var(--sans); font-weight: 800;
-    font-size: clamp(42px, 8vw, 76px); line-height: 1.02; letter-spacing: -.02em;
-    text-transform: uppercase; margin-bottom: 20px;
-  }
-  .hero .tagline { max-width: 620px; font-size: 18px; color: #374151; margin-bottom: 14px; }
-  .hero .interests {
-    font-family: var(--mono); font-size: 13px; color: var(--muted); margin-bottom: 30px;
-  }
-  .hero .interests b { color: var(--ink); font-weight: 600; }
-  .linkrow { display: flex; flex-wrap: wrap; gap: 10px; }
-  .btn {
-    display: inline-block; font-family: var(--sans); font-size: 12px; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
-    color: var(--ink); background: var(--paper);
-    border: 1px solid var(--ink); padding: 9px 18px;
-    transition: background .25s ease, color .25s ease;
-    cursor: pointer;
-  }
-  .btn:hover { background: var(--ink); color: var(--paper); }
-  .btn.solid { background: var(--ink); color: var(--paper); }
-  .btn.solid:hover { background: var(--paper); color: var(--ink); }
+  .photo img { display: block; width: 100%; height: auto; }
 
   /* ---------- Sections ---------- */
-  section { padding: 56px 0; border-bottom: 1px solid var(--rule-strong); }
-  .sec-head {
-    display: flex; align-items: baseline; gap: 16px; margin-bottom: 36px;
+  section { padding: 36px 0; border-bottom: 1px solid #ececec; }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-size: 24px; color: #1a1a1a; margin-bottom: 18px;
+    padding-bottom: 8px; border-bottom: 2px solid #224b8d; display: inline-block;
   }
-  .sec-head h2 {
-    font-family: var(--sans); font-weight: 800; font-size: 26px;
-    letter-spacing: .04em; text-transform: uppercase;
-  }
-  .sec-head .idx { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .bio p { margin-bottom: 12px; max-width: 780px; }
+  .bio a { color: #224b8d; }
 
-  /* About */
-  .about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 44px; align-items: start; }
-  .avatar { border: 1px solid var(--ink); }
-  .avatar svg { display: block; width: 100%; height: auto; }
-  .about-grid p { margin-bottom: 14px; }
-  .about-grid .meta {
-    font-family: var(--mono); font-size: 13px; color: var(--muted); margin-top: 18px;
-  }
-
-  /* News timeline */
-  .timeline { position: relative; padding-left: 28px; }
-  .timeline::before {
-    content: ""; position: absolute; left: 5px; top: 6px; bottom: 6px;
-    width: 1px; background: var(--ink);
-  }
-  .t-item { position: relative; padding-bottom: 22px; }
-  .t-item:last-child { padding-bottom: 0; }
-  .t-item::before {
-    content: ""; position: absolute; left: -28px; top: 7px;
-    width: 11px; height: 11px; border-radius: 50%;
-    background: var(--paper); border: 2px solid var(--ink);
-  }
-  .t-item.new::before { background: var(--ink); }
-  .t-date { font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
-  .t-item.new .t-date { color: var(--ink); font-weight: 700; }
-  .t-item p { margin-top: 2px; }
-  .badge {
-    display: inline-block; font-family: var(--mono); font-size: 11.5px; font-weight: 700;
-    letter-spacing: .08em; text-transform: uppercase;
-    border: 1px solid var(--ink); padding: 1px 8px; margin-left: 8px; vertical-align: 1px;
-  }
+  /* News */
+  .news-list { list-style: none; }
+  .news-list li { margin-bottom: 8px; }
+  .news-list .date { color: #224b8d; font-weight: bold; font-variant-numeric: tabular-nums; }
 
   /* Publications */
-  .pub { display: grid; grid-template-columns: 200px 1fr; gap: 32px; padding: 30px 0; border-top: 1px solid var(--rule); }
-  .pub:first-of-type { border-top: none; padding-top: 0; }
-  .teaser { border: 1px solid var(--ink); }
-  .teaser svg { display: block; width: 100%; height: auto; }
-  .pub .venue { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .pub .venue .vtag { color: var(--ink); font-weight: 700; }
-  .pub h3 { font-family: var(--serif); font-weight: 700; font-size: 20px; line-height: 1.35; margin-bottom: 8px; }
-  .pub h3 a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
-  .pub h3 a:hover { background: var(--ink); color: var(--paper); }
-  .pub .authors { font-size: 15px; color: #4b5563; margin-bottom: 14px; }
-  .pub .authors .me { color: var(--ink); font-weight: 700; border-bottom: 2px solid var(--ink); }
-  .pub-abstract {
-    font-size: 14.5px; color: #374151; max-height: 0; overflow: hidden;
-    transition: max-height .5s cubic-bezier(.19,1,.22,1), margin .4s ease;
+  .pub { margin-bottom: 44px; }
+  .pub:last-child { margin-bottom: 0; }
+  .pub .title { font-size: 18.5px; font-weight: bold; color: #1a1a1a; line-height: 1.4; margin-bottom: 4px; }
+  .pub .authors { font-size: 15px; color: #5a6066; margin-bottom: 4px; }
+  .pub .authors .me { color: #1a1a1a; font-weight: bold; text-decoration: underline; text-decoration-color: #224b8d; text-underline-offset: 3px; }
+  .pub .venue { font-size: 15px; margin-bottom: 10px; color: #494e52; }
+  .pub .venue .v { font-weight: bold; color: #b33a3a; }
+  .pub .venue .v.prep { color: #8a6d3b; }
+  .pub .plinks { font-size: 15px; margin-bottom: 12px; }
+  .pub .plinks a { font-weight: bold; margin-right: 4px; }
+  .pub .plinks .sep { color: #c5c9cd; margin: 0 6px; }
+  .pub .plinks button {
+    background: none; border: none; padding: 0; cursor: pointer;
+    font: inherit; font-weight: bold; color: #224b8d;
   }
-  .pub.open .pub-abstract { max-height: 480px; margin-bottom: 14px; }
-  .abstract-toggle {
-    font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
-    background: none; border: none; cursor: pointer; color: var(--muted);
-    border-bottom: 1px dotted var(--muted); padding: 0 0 1px; margin-bottom: 12px;
+  .pub .plinks button:hover { text-decoration: underline; }
+  .pub figure { max-width: 600px; }
+  .pub figure img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid #e4e4e4; border-radius: 6px;
   }
-  .abstract-toggle:hover { color: var(--ink); border-bottom-color: var(--ink); }
-  .pub .btns { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pub figcaption { font-size: 13px; color: #8a9096; margin-top: 6px; }
 
   /* BibTeX modal */
   .modal {
     position: fixed; inset: 0; z-index: 100; display: none;
-    align-items: center; justify-content: center; background: rgba(17,17,17,.55);
-    padding: 24px;
+    align-items: center; justify-content: center; background: rgba(20,24,30,.45); padding: 24px;
   }
   .modal.show { display: flex; }
   .modal-box {
-    background: var(--paper); border: 1px solid var(--ink);
-    max-width: 640px; width: 100%; padding: 28px;
-    transform-origin: top center;
-    animation: pop .35s cubic-bezier(.19,1,.22,1);
+    background: #fff; border-radius: 10px; max-width: 660px; width: 100%;
+    padding: 26px 28px; box-shadow: 0 12px 40px rgba(0,0,0,.25);
   }
-  @keyframes pop { from { transform: scaleY(.6); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
-  .modal-box h4 { font-family: var(--sans); text-transform: uppercase; letter-spacing: .1em; font-size: 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .modal-box h4 { font-size: 16px; color: #1a1a1a; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .modal-box h4 button { background: none; border: none; cursor: pointer; font-size: 14px; color: #8a9096; }
   .modal-box pre {
-    font-family: var(--mono); font-size: 12.5px; line-height: 1.6;
-    background: #f6f6f6; border: 1px solid var(--rule);
-    padding: 16px; overflow-x: auto; white-space: pre; margin-bottom: 16px;
+    font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 12.5px; line-height: 1.6;
+    background: #f6f7f8; border: 1px solid #e4e4e4; border-radius: 6px;
+    padding: 14px 16px; overflow-x: auto; white-space: pre; margin-bottom: 14px; color: #333;
   }
   .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .modal-actions button {
+    font: inherit; font-size: 14px; font-weight: bold; cursor: pointer;
+    border-radius: 6px; padding: 7px 18px;
+  }
+  .modal-actions .copy { background: #224b8d; color: #fff; border: 1px solid #224b8d; }
+  .modal-actions .copy:hover { background: #1a3a6e; }
+  .modal-actions .close2 { background: #fff; color: #494e52; border: 1px solid #ccc; }
 
-  /* Contact & footer */
-  .contact-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .contact-note { margin-top: 20px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
-  footer { padding: 32px 0 48px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
-  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-  footer a { color: var(--ink); }
-
-  /* Scroll reveal */
-  .reveal { transform: scaleY(0); transform-origin: top; opacity: 0; transition: transform .5s cubic-bezier(.19,1,.22,1), opacity .45s ease; }
-  .reveal.in { transform: scaleY(1); opacity: 1; }
+  footer { padding: 26px 0 44px; font-size: 13.5px; color: #9aa0a6; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
 
   @media (max-width: 720px) {
-    .about-grid { grid-template-columns: 1fr; gap: 24px; }
-    .avatar { max-width: 240px; }
-    .pub { grid-template-columns: 1fr; gap: 16px; }
-    .teaser { max-width: 260px; }
-    .topnav a { padding: 6px 8px; letter-spacing: .06em; }
-    .hero { padding: 56px 0 40px; }
+    .head-grid { flex-direction: column-reverse; }
+    .photo { width: 210px; }
+    .head-text h1 { font-size: 32px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ======================= TOP BAR ======================= -->
-<div class="topbar">
+<header>
   <div class="wrap">
-    <a class="wordmark" href="#top">Junchao&nbsp;Cui</a>
-    <nav class="topnav">
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#publications">Publications</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</div>
-
-<!-- ======================= HERO ======================= -->
-<header class="hero" id="top">
-  <div class="wrap">
-    <p class="eyebrow">Computer Vision · Geo-localization · Multimodal Learning</p>
-    <h1>Junchao<br>Cui</h1>
-    <p class="tagline">
-      I research how machines can infer <em>where on Earth</em> visual content was captured —
-      from a single photo to a multi-shot video — and how geographic structure can be
-      injected into multimodal representations.
-    </p>
-    <p class="interests">
-      <b>Worldwide Image Geo-localization</b> / <b>Global Video Geo-localization</b> / <b>Multimodal Large Models</b>
-    </p>
-    <div class="linkrow">
-      <a class="btn solid" href="mailto:cjc20250301@163.com">Email</a>
-      <a class="btn" href="https://github.com/CJ310177" target="_blank" rel="noopener">GitHub</a>
-      <a class="btn" href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener">arXiv</a>
+    <div class="head-grid">
+      <div class="head-text">
+        <h1>Junchao Cui</h1>
+        <p class="role">Researcher in Computer Vision — <em>Worldwide Image &amp; Video Geo-localization</em></p>
+        <ul class="sociallinks">
+          <li><a href="mailto:cjc20250301@163.com">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251V4.809l5.74 4.508a1.75 1.75 0 0 0 2.02 0l5.74-4.508v7.442a.25.25 0 0 1-.25.25H1.75a.25.25 0 0 1-.25-.25Zm.22-9.219 5.72 4.504a.25.25 0 0 0 .22 0l5.72-4.504a.248.248 0 0 0-.22-.281H1.97a.25.25 0 0 0-.25.281Z"/></svg>
+            Email</a></li>
+          <li><a href="https://github.com/CJ310177" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.08 1.89 3.75 3.65 3.95.22.2.42.6.42 1.23 0 .89-.01 1.6-.01 1.82 0 .21.15.46.55.38A8.012 8.012 0 0 1 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+            GitHub</a></li>
+          <li><a href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M3.7 2.2 8.02 13.9 5.74 14 .3 2.4l3.4-.2Zm8.6 0L7.98 13.9l2.28.1L15.7 2.4l-3.4-.2ZM8.35 1l-.7 1.8h1.3L8.65 1h-.3Z" transform="scale(0.95) translate(0.4,0.5)"/></svg>
+            arXiv</a></li>
+        </ul>
+      </div>
+      <div class="photo">
+        <img src="photo.jpg" alt="Junchao Cui">
+      </div>
     </div>
   </div>
 </header>
 
-<!-- ======================= ABOUT ======================= -->
+<!-- ======================= ABOUT / BIO ======================= -->
 <section id="about">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">01</span><h2>About</h2></div>
-    <div class="about-grid reveal">
-      <div class="avatar" aria-label="Portrait placeholder">
-        <!-- Monogram avatar: replace this SVG with your photo, e.g. <img src="photo.jpg" alt="Junchao Cui"> -->
-        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg" role="img">
-          <rect width="220" height="260" fill="#fff"/>
-          <g stroke="#111" stroke-width="1.5" fill="none">
-            <circle cx="110" cy="96" r="52"/>
-            <ellipse cx="110" cy="96" rx="22" ry="52"/>
-            <line x1="58" y1="96" x2="162" y2="96"/>
-            <path d="M63 74 Q110 58 157 74"/>
-            <path d="M63 118 Q110 134 157 118"/>
-            <path d="M110 148 v22"/>
-            <path d="M110 170 l-14 22 h28 z" fill="#111"/>
-          </g>
-          <text x="110" y="236" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-weight="800" font-size="26" letter-spacing="6" fill="#111">J.CUI</text>
-        </svg>
-      </div>
-      <div>
-        <p>
-          I am a researcher in computer vision working on <strong>worldwide image and video
-          geo-localization</strong> — the task of predicting the geographic location of visual
-          content captured anywhere on the planet, from street level up to the continent.
-        </p>
-        <p>
-          My recent work explores dual-view contrastive learning for image geo-localization
-          (<a href="https://arxiv.org/abs/2604.25533" style="color:inherit">DualGeo</a>, ICME 2026),
-          metric geographic structure injection (<a href="https://arxiv.org/abs/2606.08918" style="color:inherit">GeoMetric</a>),
-          and hierarchical graph attention for global video geo-localization
-          (<a href="https://arxiv.org/abs/2609.39128" style="color:inherit">GeoGAT</a>).
-          I also authored the first survey on worldwide image geo-localization,
-          accepted by <em>Information Processing and Management</em> (IPM).
-        </p>
-        <!-- EDIT: add your affiliation, degree program, or lab here -->
-        <p class="meta">Open to collaboration on geo-localization, multimodal learning, and retrieval-augmented inference.</p>
-      </div>
+    <div class="bio">
+      <p>
+        I am a researcher in computer vision working on <b>worldwide image and video geo-localization</b> —
+        inferring where on Earth visual content was captured, from street level up to the continent.
+        My work covers dual-view contrastive representation learning, metric geographic structure
+        modeling, and hierarchical graph reasoning over geographic scales, often augmented by large
+        multimodal models (LMMs).
+      </p>
+      <!-- EDIT: add your affiliation / degree / lab here -->
+      <p>
+        My work has been published at <b>ICME 2026</b> and <b>Information Processing and Management (IPM)</b>.
+        I authored the <a href="#pub-survey">first survey on worldwide image geo-localization</a>.
+        Feel free to reach out for collaboration or discussion.
+      </p>
     </div>
   </div>
 </section>
@@ -274,234 +166,103 @@
 <!-- ======================= NEWS ======================= -->
 <section id="news">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">02</span><h2>News</h2></div>
-    <div class="timeline reveal">
-      <div class="t-item new">
-        <span class="t-date">October 2026 <span class="badge">New</span></span>
-        <p>Our survey <strong>“Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization”</strong> was accepted by <em>Information Processing and Management</em> (IPM) — the first survey of worldwide image geo-localization.</p>
-      </div>
-      <div class="t-item">
-        <span class="t-date">September 2026</span>
-        <p><strong>GeoGAT</strong> (global video geo-localization with bidirectional temporal sampling and hierarchical graph attention) is now on arXiv.</p>
-      </div>
-      <div class="t-item">
-        <span class="t-date">June 2026</span>
-        <p><strong>GeoMetric</strong> (injecting metric geographic structure into worldwide image geo-localization) is now on arXiv.</p>
-      </div>
-      <div class="t-item">
-        <span class="t-date">April 2026</span>
-        <p><strong>DualGeo</strong> was accepted at <strong>ICME 2026</strong>. Code and datasets are publicly available.</p>
-      </div>
-    </div>
+    <h2>News</h2>
+    <ul class="news-list">
+      <li><span class="date">2026.10:</span> Our survey <b>“Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization”</b> was accepted by <b>Information Processing and Management (IPM)</b> — the first survey of this field.</li>
+      <li><span class="date">2026.09:</span> <b>GeoGAT</b> (bidirectional temporal sampling + hierarchical graph attention for global video geo-localization) is now on arXiv.</li>
+      <li><span class="date">2026.06:</span> <b>GeoMetric</b> (injecting metric geographic structure into worldwide image geo-localization) is now on arXiv.</li>
+      <li><span class="date">2026.04:</span> <b>DualGeo</b> was accepted at <b>ICME 2026</b>. Code and datasets are publicly available.</li>
+    </ul>
   </div>
 </section>
 
 <!-- ======================= PUBLICATIONS ======================= -->
 <section id="publications">
   <div class="wrap">
-    <div class="sec-head"><span class="idx">03</span><h2>Publications</h2></div>
+    <h2>Publications</h2>
 
     <!-- Survey -->
-    <article class="pub reveal">
-      <div class="teaser">
-        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Survey teaser">
-          <rect width="200" height="150" fill="#fff"/>
-          <g stroke="#111" fill="none" stroke-width="1.5">
-            <circle cx="76" cy="75" r="44"/>
-            <ellipse cx="76" cy="75" rx="18" ry="44"/>
-            <line x1="32" y1="75" x2="120" y2="75"/>
-            <path d="M39 56 Q76 42 113 56"/><path d="M39 94 Q76 108 113 94"/>
-          </g>
-          <g fill="#111">
-            <rect x="138" y="34" width="8" height="8"/><rect x="150" y="34" width="8" height="8"/><rect x="162" y="34" width="8" height="8"/>
-            <rect x="138" y="46" width="8" height="8"/><rect x="150" y="46" width="8" height="8"/><rect x="162" y="46" width="8" height="8"/>
-            <rect x="138" y="58" width="8" height="8"/><rect x="150" y="58" width="8" height="8"/><rect x="162" y="58" width="8" height="8"/>
-          </g>
-          <g stroke="#111" stroke-width="1.5" fill="none">
-            <line x1="134" y1="76" x2="178" y2="76"/><line x1="134" y1="84" x2="170" y2="84"/><line x1="134" y1="92" x2="174" y2="92"/><line x1="134" y1="100" x2="160" y2="100"/>
-            <line x1="134" y1="112" x2="178" y2="112"/><line x1="134" y1="120" x2="166" y2="120"/>
-          </g>
-          <text x="14" y="140" font-family="Consolas, monospace" font-size="9" letter-spacing="2" fill="#111">SURVEY</text>
-        </svg>
-      </div>
-      <div>
-        <p class="venue"><span class="vtag">IPM 2026</span> · Information Processing and Management · Accepted</p>
-        <h3>Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization</h3>
-        <!-- EDIT: confirm the full author list for the survey -->
-        <p class="authors"><span class="me">Junchao Cui</span></p>
-        <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ▾</button>
-        <p class="pub-abstract">
-          The first comprehensive survey of worldwide image geo-localization, covering the task
-          formulation, datasets, feature-based and learning-based methods, hierarchical
-          prediction strategies, and the emerging role of large multimodal models — together
-          with open challenges and future directions for the field.
-        </p>
-        <div class="btns">
-          <button class="btn" onclick="openBib('survey')">BibTeX</button>
-        </div>
-      </div>
+    <article class="pub" id="pub-survey">
+      <p class="title">Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization</p>
+      <!-- EDIT: confirm the full author list for the survey -->
+      <p class="authors"><span class="me">Junchao Cui</span></p>
+      <p class="venue"><span class="v">IPM 2026</span> · Information Processing and Management · Accepted</p>
+      <p class="plinks">
+        <button onclick="openBib('survey')">BibTeX</button>
+      </p>
+      <figure>
+        <img src="survey.jpg" alt="Taxonomy of the survey on worldwide image geo-localization">
+        <figcaption>An overview of the worldwide image geo-localization pipeline and the taxonomy covered in our survey.</figcaption>
+      </figure>
     </article>
 
     <!-- GeoGAT -->
-    <article class="pub reveal">
-      <div class="teaser">
-        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GeoGAT teaser">
-          <rect width="200" height="150" fill="#fff"/>
-          <g stroke="#111" stroke-width="1.5" fill="none">
-            <rect x="14" y="96" width="42" height="30"/><rect x="60" y="96" width="42" height="30"/><rect x="106" y="96" width="42" height="30"/>
-            <line x1="22" y1="104" x2="48" y2="104"/><line x1="22" y1="110" x2="40" y2="110"/><line x1="22" y1="116" x2="44" y2="116"/>
-            <line x1="68" y1="104" x2="94" y2="104"/><line x1="68" y1="110" x2="86" y2="110"/><line x1="68" y1="116" x2="90" y2="116"/>
-            <line x1="114" y1="104" x2="140" y2="104"/><line x1="114" y1="110" x2="132" y2="110"/><line x1="114" y1="116" x2="136" y2="116"/>
-            <circle cx="35" cy="70" r="5"/><circle cx="81" cy="52" r="5"/><circle cx="127" cy="34" r="5"/><circle cx="173" cy="22" r="5"/>
-            <line x1="35" y1="70" x2="81" y2="52"/><line x1="81" y1="52" x2="127" y2="34"/><line x1="127" y1="34" x2="173" y2="22"/>
-            <line x1="35" y1="70" x2="127" y2="34"/><line x1="81" y1="52" x2="173" y2="22"/>
-            <line x1="35" y1="75" x2="35" y2="96"/><line x1="81" y1="57" x2="81" y2="96"/><line x1="127" y1="39" x2="127" y2="96"/>
-          </g>
-          <g fill="#111"><circle cx="35" cy="70" r="2.5"/><circle cx="81" cy="52" r="2.5"/><circle cx="127" cy="34" r="2.5"/><circle cx="173" cy="22" r="2.5"/></g>
-        </svg>
-      </div>
-      <div>
-        <p class="venue"><span class="vtag">Preprint</span> · arXiv:2609.39128 · September 2026</p>
-        <h3><a href="https://arxiv.org/abs/2609.39128" target="_blank" rel="noopener">GeoGAT: Bidirectional Temporal Sampling Meets Hierarchical Graph Attention for Global Video Geo-localization</a></h3>
-        <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Hangyu Li, Biru Zhu, Chong Fu, Xiangyang Luo</p>
-        <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ▾</button>
-        <p class="pub-abstract">
-          Global video geo-localization aims to infer the geographic location of a video worldwide,
-          evaluated across four geographic hierarchies. Existing methods typically employ one-way
-          uniform sampling and train independent classifiers per hierarchy, losing key geographic
-          cues and causing prediction conflicts. GeoGAT integrates bidirectional temporal sampling
-          with graph attention networks: forward and offset-reversed frame sequences build
-          complementary spatiotemporal features, which are passed through a predefined geographic
-          hierarchy graph with structure-aware message passing and a dual-constraint pruning
-          mechanism. We also introduce GeoGAT10k (9,720 multi-shot edited videos from 166 cities).
-          GeoGAT eliminates hierarchical conflicts entirely and improves over the strongest baseline
-          by 2.6 points (city level) on CityGuessr68k and over 24 points on GeoGAT10k.
-        </p>
-        <div class="btns">
-          <a class="btn" href="https://arxiv.org/pdf/2609.39128" target="_blank" rel="noopener">PDF</a>
-          <a class="btn" href="https://arxiv.org/abs/2609.39128" target="_blank" rel="noopener">arXiv</a>
-          <button class="btn" onclick="openBib('geogat')">BibTeX</button>
-        </div>
-      </div>
+    <article class="pub">
+      <p class="title">GeoGAT: Bidirectional Temporal Sampling Meets Hierarchical Graph Attention for Global Video Geo-localization</p>
+      <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Hangyu Li, Biru Zhu, Chong Fu, Xiangyang Luo</p>
+      <p class="venue"><span class="v prep">Preprint</span> · arXiv:2609.39128 · September 2026</p>
+      <p class="plinks">
+        <a href="https://arxiv.org/pdf/2609.39128" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
+        <a href="https://arxiv.org/abs/2609.39128" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
+        <button onclick="openBib('geogat')">BibTeX</button>
+      </p>
+      <figure>
+        <img src="geogat.jpg" alt="GeoGAT framework overview">
+        <figcaption>GeoGAT overview: bidirectional temporal sampling feeds a predefined geographic hierarchy graph with GAT-based message passing.</figcaption>
+      </figure>
     </article>
 
     <!-- GeoMetric -->
-    <article class="pub reveal">
-      <div class="teaser">
-        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GeoMetric teaser">
-          <rect width="200" height="150" fill="#fff"/>
-          <g stroke="#111" stroke-width="1.5" fill="none">
-            <circle cx="100" cy="78" r="48"/>
-            <ellipse cx="100" cy="78" rx="20" ry="48"/>
-            <line x1="52" y1="78" x2="148" y2="78"/>
-            <path d="M59 56 Q100 42 141 56"/><path d="M59 100 Q100 114 141 100"/>
-            <path d="M70 102 Q100 30 132 62" stroke-dasharray="4 4"/>
-          </g>
-          <g fill="#111"><circle cx="70" cy="102" r="4"/><circle cx="132" cy="62" r="4"/></g>
-          <g stroke="#111" stroke-width="1.2" fill="none">
-            <line x1="70" y1="112" x2="132" y2="112"/>
-            <line x1="70" y1="108" x2="70" y2="116"/><line x1="132" y1="108" x2="132" y2="116"/>
-          </g>
-          <text x="86" y="127" font-family="Consolas, monospace" font-size="9" fill="#111">d(·,·)</text>
-        </svg>
-      </div>
-      <div>
-        <p class="venue"><span class="vtag">Preprint</span> · arXiv:2606.08918 · June 2026</p>
-        <h3><a href="https://arxiv.org/abs/2606.08918" target="_blank" rel="noopener">GeoMetric: Injecting Metric Geographic Structure into Worldwide Image Geo-Localization</a></h3>
-        <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Nan Wu, Biru Zhu, Xiangyang Luo</p>
-        <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ▾</button>
-        <p class="pub-abstract">
-          In existing worldwide image geo-localization, GPS coordinates serve only as training
-          supervision and the distance relationships among locations never enter the learned
-          representation, so appearance-based methods mistake distant look-alikes for the true
-          location. GeoMetric is a retrieval-based framework that encodes GPS coordinates
-          relationally: a Transformer-based GPS encoder with distance-aware location attention,
-          a trimodal contrastive objective aligning images, geo-textual descriptions, and GPS
-          embeddings, and a retrieval-augmented inference stage that supplies large multimodal
-          models with contrastive candidate context. It consistently outperforms state-of-the-art
-          methods on IM2GPS, IM2GPS3k, YFCC4k, and YFCC26k.
-        </p>
-        <div class="btns">
-          <a class="btn" href="https://arxiv.org/pdf/2606.08918" target="_blank" rel="noopener">PDF</a>
-          <a class="btn" href="https://arxiv.org/abs/2606.08918" target="_blank" rel="noopener">arXiv</a>
-          <button class="btn" onclick="openBib('geometric')">BibTeX</button>
-        </div>
-      </div>
+    <article class="pub">
+      <p class="title">GeoMetric: Injecting Metric Geographic Structure into Worldwide Image Geo-Localization</p>
+      <p class="authors"><span class="me">Junchao Cui</span>, Xuanzi Ma, Wenqi Shi, Nan Wu, Biru Zhu, Xiangyang Luo</p>
+      <p class="venue"><span class="v prep">Preprint</span> · arXiv:2606.08918 · June 2026</p>
+      <p class="plinks">
+        <a href="https://arxiv.org/pdf/2606.08918" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
+        <a href="https://arxiv.org/abs/2606.08918" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
+        <button onclick="openBib('geometric')">BibTeX</button>
+      </p>
+      <figure>
+        <img src="geometric.jpg" alt="GeoMetric framework overview">
+        <figcaption>GeoMetric encodes GPS coordinates relationally and injects distance structure into representation learning and inference.</figcaption>
+      </figure>
     </article>
 
     <!-- DualGeo -->
-    <article class="pub reveal">
-      <div class="teaser">
-        <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DualGeo teaser">
-          <rect width="200" height="150" fill="#fff"/>
-          <g stroke="#111" stroke-width="1.5" fill="none">
-            <circle cx="82" cy="70" r="40"/>
-            <ellipse cx="82" cy="70" rx="16" ry="40"/>
-            <line x1="42" y1="70" x2="122" y2="70"/>
-            <circle cx="124" cy="70" r="40" stroke-dasharray="5 4"/>
-            <path d="M124 30 v-8 M124 110 v8 M164 70 h8 M84 70 h-8"/>
-            <path d="M103 118 l-14 20 h28 z"/>
-          </g>
-          <g stroke="#111" stroke-width="1.2" fill="none">
-            <line x1="52" y1="58" x2="112" y2="58"/><line x1="52" y1="82" x2="112" y2="82"/>
-          </g>
-          <g fill="#111"><circle cx="82" cy="70" r="3"/></g>
-        </svg>
-      </div>
-      <div>
-        <p class="venue"><span class="vtag">ICME 2026</span> · IEEE International Conference on Multimedia and Expo · arXiv:2604.25533</p>
-        <h3><a href="https://arxiv.org/abs/2604.25533" target="_blank" rel="noopener">DualGeo: A Dual-View Framework for Worldwide Image Geo-localization</a></h3>
-        <p class="authors"><span class="me">Junchao Cui</span>, Wenqi Shi, Shaoyong Du, Hang He, Xuanzi Ma, Hao Tang, Xiangyang Luo</p>
-        <button class="abstract-toggle" onclick="toggleAbstract(this)">Abstract ▾</button>
-        <p class="pub-abstract">
-          Existing worldwide image geo-localization methods rely on visual features sensitive to
-          environmental variations and lack effective post-processing to filter outlier candidates.
-          DualGeo is a two-stage framework: it first builds a geo-representational foundation by
-          fusing image and semantic segmentation features via bidirectional cross-attention, aligned
-          with GPS coordinates through dual-view contrastive learning; it then performs
-          geo-cognitive refinement by re-ranking retrieved candidates with geographic clustering and
-          feeding them into large multimodal models for final coordinate prediction. DualGeo
-          outperforms state-of-the-art methods on IM2GPS, IM2GPS3k, and YFCC4k.
-        </p>
-        <div class="btns">
-          <a class="btn" href="https://arxiv.org/pdf/2604.25533" target="_blank" rel="noopener">PDF</a>
-          <a class="btn" href="https://arxiv.org/abs/2604.25533" target="_blank" rel="noopener">arXiv</a>
-          <a class="btn" href="https://github.com/CJ310177/DualGeo" target="_blank" rel="noopener">Code</a>
-          <button class="btn" onclick="openBib('dualgeo')">BibTeX</button>
-        </div>
-      </div>
+    <article class="pub">
+      <p class="title">DualGeo: A Dual-View Framework for Worldwide Image Geo-localization</p>
+      <p class="authors"><span class="me">Junchao Cui</span>, Wenqi Shi, Shaoyong Du, Hang He, Xuanzi Ma, Hao Tang, Xiangyang Luo</p>
+      <p class="venue"><span class="v">ICME 2026</span> · IEEE International Conference on Multimedia and Expo · arXiv:2604.25533</p>
+      <p class="plinks">
+        <a href="https://arxiv.org/pdf/2604.25533" target="_blank" rel="noopener">Paper</a><span class="sep">|</span>
+        <a href="https://arxiv.org/abs/2604.25533" target="_blank" rel="noopener">arXiv</a><span class="sep">|</span>
+        <a href="https://github.com/CJ310177/DualGeo" target="_blank" rel="noopener">Code</a><span class="sep">|</span>
+        <button onclick="openBib('dualgeo')">BibTeX</button>
+      </p>
+      <figure>
+        <img src="dualgeo.jpg" alt="DualGeo framework overview">
+        <figcaption>DualGeo: a two-stage framework with dual-view contrastive retrieval and LMM-based geo-cognitive refinement.</figcaption>
+      </figure>
     </article>
 
-  </div>
-</section>
-
-<!-- ======================= CONTACT ======================= -->
-<section id="contact">
-  <div class="wrap">
-    <div class="sec-head"><span class="idx">04</span><h2>Contact</h2></div>
-    <div class="contact-grid reveal">
-      <a class="btn solid" href="mailto:cjc20250301@163.com">cjc20250301@163.com</a>
-      <a class="btn" href="https://github.com/CJ310177" target="_blank" rel="noopener">github.com/CJ310177</a>
-      <a class="btn" href="https://arxiv.org/search/cs?query=Cui%2C+Junchao&searchtype=author" target="_blank" rel="noopener">arXiv author page</a>
-    </div>
-    <p class="contact-note reveal">// Feel free to reach out for collaborations, discussions, or full-text requests.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span>© 2026 Junchao Cui</span>
-    <span>Worldwide Image &amp; Video Geo-localization</span>
+    <span><a href="https://github.com/CJ310177" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:cjc20250301@163.com">cjc20250301@163.com</a></span>
   </div>
 </footer>
 
 <!-- ======================= BIBTEX MODAL ======================= -->
 <div class="modal" id="bib-modal" onclick="if(event.target===this)closeBib()">
   <div class="modal-box">
-    <h4>BibTeX <button class="abstract-toggle" onclick="closeBib()" style="margin:0">Close ✕</button></h4>
+    <h4>BibTeX <button onclick="closeBib()" aria-label="Close">✕</button></h4>
     <pre id="bib-pre"></pre>
     <div class="modal-actions">
-      <button class="btn" onclick="copyBib()">Copy</button>
+      <button class="close2" onclick="closeBib()">Close</button>
+      <button class="copy" id="bib-copy" onclick="copyBib()">Copy</button>
     </div>
   </div>
 </div>
@@ -541,32 +302,13 @@
   }
   function closeBib() { document.getElementById('bib-modal').classList.remove('show'); }
   function copyBib() {
+    const btn = document.getElementById('bib-copy');
     navigator.clipboard.writeText(document.getElementById('bib-pre').textContent).then(() => {
-      event.target.textContent = 'Copied';
-      setTimeout(() => event.target.textContent = 'Copy', 1500);
+      btn.textContent = 'Copied';
+      setTimeout(() => btn.textContent = 'Copy', 1500);
     });
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBib(); });
-
-  function toggleAbstract(btn) {
-    const pub = btn.closest('.pub');
-    pub.classList.toggle('open');
-    btn.textContent = pub.classList.contains('open') ? 'Abstract ▴' : 'Abstract ▾';
-  }
-
-  // Scroll reveal: scale-y from origin-top, staggered per item
-  const io = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('in'), (e.target.dataset.stagger || 0) * 90);
-        io.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.dataset.stagger = i % 4;
-    io.observe(el);
-  });
 </script>
 
 </body>
