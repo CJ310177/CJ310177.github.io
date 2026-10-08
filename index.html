@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Junchao Cui | Worldwide Image & Video Geo-localization</title>
 <meta name="description" content="Junchao Cui — researcher on worldwide image geo-localization, video geo-localization, and multimodal learning.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
@@ -245,6 +246,46 @@
   }
   .pub figcaption { font-style: italic; font-size: 14px; color: var(--ink-2); margin-top: 9px; line-height: 1.55; }
 
+  /* Collapsible scroll windows — News & Publications */
+  .scrollbox {
+    max-width: 760px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ink-3) transparent;
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 44px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 44px), transparent);
+  }
+  .scrollbox::-webkit-scrollbar { width: 8px; }
+  .scrollbox::-webkit-scrollbar-track { background: transparent; }
+  .scrollbox::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+  .scrollbox::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
+  .scrollbox.expanded {
+    max-height: none !important;
+    overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  #news-box { max-height: 320px; }
+  #pubs-box { max-height: 640px; }
+
+  .expand-toggle {
+    margin-top: 16px; padding: 0 2px;
+    background: none; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--sans); font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .14em;
+    color: var(--ink-2);
+    transition: color .18s ease;
+  }
+  .expand-toggle::before {
+    content: ""; width: 22px; height: 1px; background: var(--ink-3);
+    transition: width .18s ease, background .18s ease;
+  }
+  .expand-toggle:hover { color: var(--accent); }
+  .expand-toggle:hover::before { width: 34px; background: var(--accent); }
+  .expand-toggle .arr { font-family: var(--sans); }
+
   /* Contact — ruled rows */
   .contact-list { list-style: none; border-top: 1px solid var(--line); max-width: 660px; }
   .contact-list li { border-bottom: 1px solid var(--line); }
@@ -329,6 +370,8 @@
     .interests span { display: block; margin-left: 0; text-align: left; }
     .interests .row { flex-wrap: wrap; gap: 4px 18px; }
     .news-list li { gap: 16px; }
+    #news-box { max-height: 300px; }
+    #pubs-box { max-height: 560px; }
   }
 </style>
 </head>
@@ -457,6 +500,7 @@
     <!-- News -->
     <section id="news">
       <h2><span class="no">02</span>News</h2>
+      <div class="scrollbox" id="news-box">
       <ul class="news-list">
         <li><span class="date">2026.10</span><span><span class="emoji tag">🎉</span>Our survey <b>“Tracing Locations from Pixels: A Survey of Worldwide Image Geo-localization”</b> was accepted by <b>Information Processing and Management (IPM)</b> — the first survey of this field.</span></li>
         <li><span class="date">2026.09</span><span><span class="emoji tag">📄</span><b>GeoGAT</b> (bidirectional temporal sampling + hierarchical graph attention for global video geo-localization) is now on arXiv.</span></li>
@@ -465,12 +509,15 @@
         <li><span class="date">2026.04</span><span><span class="emoji tag">🎉</span><b>DualGeo</b> was accepted at <b>ICME 2026</b>. Code and datasets are publicly available.</span></li>
         <li><span class="date">2026.03</span><span><span class="emoji tag">🎉</span>Two papers were accepted at <b>IJCNN 2026</b> — congrats to co-authors <b>Ma</b> and <b>Liu</b>!</span></li>
       </ul>
+      </div>
+      <button class="expand-toggle" type="button" data-target="news-box" hidden><span class="lbl">Show all</span><span class="arr">↓</span></button>
     </section>
 
     <!-- Publications -->
     <section id="publications">
       <h2><span class="no">03</span>Publications</h2>
 
+      <div class="scrollbox" id="pubs-box">
       <article class="pub" id="pub-survey">
         <div class="phead">
           <span class="no">01</span>
@@ -542,6 +589,8 @@
           <figcaption>DualGeo: a two-stage framework with dual-view contrastive retrieval and LMM-based geo-cognitive refinement.</figcaption>
         </figure>
       </article>
+      </div>
+      <button class="expand-toggle" type="button" data-target="pubs-box" hidden><span class="lbl">Show all</span><span class="arr">↓</span></button>
     </section>
 
     <!-- Contact -->
@@ -615,6 +664,27 @@
     });
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBib(); });
+
+  // Collapsible scroll windows (News / Publications)
+  document.querySelectorAll('.expand-toggle').forEach(btn => {
+    const box = document.getElementById(btn.dataset.target);
+    const lbl = btn.querySelector('.lbl');
+    const arr = btn.querySelector('.arr');
+    function syncToggle() {
+      const expanded = box.classList.contains('expanded');
+      btn.hidden = !expanded && box.scrollHeight <= box.clientHeight + 2;
+    }
+    btn.addEventListener('click', () => {
+      const expanded = box.classList.toggle('expanded');
+      lbl.textContent = expanded ? 'Show less' : 'Show all';
+      arr.textContent = expanded ? '↑' : '↓';
+      if (!expanded) box.scrollTop = 0;
+      syncToggle();
+    });
+    window.addEventListener('resize', syncToggle);
+    window.addEventListener('load', syncToggle);
+    syncToggle();
+  });
 
   // Scrollspy: highlight the current section in both sidebar nav and top nav
   const navLinks = document.querySelectorAll('.sidenav a, .topnav a');
