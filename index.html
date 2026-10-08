@@ -165,6 +165,7 @@
   .grat .grid { stroke: var(--line); stroke-width: 1; }
   .grat .eq { stroke: #dcdcdc; }
   .grat .dot { fill: var(--accent); }
+  .grat .dot, .grat .ring { transition: cx .7s ease, cy .7s ease; }
   .grat .ring {
     fill: none; stroke: var(--accent); stroke-width: 1; opacity: .55;
     transform-origin: center; transform-box: fill-box;
@@ -451,14 +452,14 @@
           <line class="grid" x1="0" y1="80" x2="720" y2="80"/>
           <line class="grid" x1="0" y1="96" x2="720" y2="96"/>
           <!-- Rome 41.89N 12.51E -->
-          <circle class="ring"    cx="385" cy="25.6" r="6"/>
-          <circle class="dot"     cx="385" cy="25.6" r="2.4"/>
+          <circle class="ring"    id="wring1" cx="385" cy="25.6" r="6"/>
+          <circle class="dot"     id="wdot1" cx="385" cy="25.6" r="2.4"/>
           <!-- New York 40.71N 74.01W -->
-          <circle class="ring r2" cx="212" cy="26.3" r="6"/>
-          <circle class="dot"     cx="212" cy="26.3" r="2.4"/>
+          <circle class="ring r2" id="wring2" cx="212" cy="26.3" r="6"/>
+          <circle class="dot"     id="wdot2" cx="212" cy="26.3" r="2.4"/>
           <!-- Tokyo 35.68N 139.77E -->
-          <circle class="ring r3" cx="639.5" cy="29" r="6"/>
-          <circle class="dot"     cx="639.5" cy="29" r="2.4"/>
+          <circle class="ring r3" id="wring3" cx="639.5" cy="29" r="6"/>
+          <circle class="dot"     id="wdot3" cx="639.5" cy="29" r="2.4"/>
         </svg>
       </div>
 
@@ -696,6 +697,28 @@
     });
   }, { rootMargin: '-20% 0px -70% 0px' });
   document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+  // Graticule markers: wander between random grid intersections
+  const SPOTS = [
+    { dot: document.getElementById('wdot1'), ring: document.getElementById('wring1') },
+    { dot: document.getElementById('wdot2'), ring: document.getElementById('wring2') },
+    { dot: document.getElementById('wdot3'), ring: document.getElementById('wring3') }
+  ];
+  function placeSpot(spot) {
+    let x, y, tries = 0;
+    do {
+      x = 60 * (1 + Math.floor(Math.random() * 11));
+      y = 16 * (1 + Math.floor(Math.random() * 5));
+      tries++;
+    } while (tries < 10 && SPOTS.some(s => s !== spot && s.ring.getAttribute('cx') == x && s.ring.getAttribute('cy') == y));
+    spot.dot.setAttribute('cx', x); spot.dot.setAttribute('cy', y);
+    spot.ring.setAttribute('cx', x); spot.ring.setAttribute('cy', y);
+  }
+  function wander(spot) {
+    placeSpot(spot);
+    setTimeout(() => wander(spot), 1600 + Math.random() * 2800);
+  }
+  SPOTS.forEach(spot => setTimeout(() => wander(spot), Math.random() * 1200));
 
   // Coordinate readout: slowly drifts between places on Earth
   const PLACES = [
